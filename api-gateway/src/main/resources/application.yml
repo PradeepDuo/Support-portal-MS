@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+#    circuitbreaker:
+#      resilience4j:
+#        enabled: true
+    gateway:
+      routes:
+        - id: PROJECT-SERVICE
+          uri: lb://PROJECT-SERVICE
+          predicates:
+            - Path=/api/project/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: circuitBreaker
+#                fallBackUri: forward:/fallback
+
+        - id: TICKET-SERVICE
+          uri: lb://TICKET-SERVICE
+          predicates:
+            - Path=/api/tickets/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: circuitBreaker
+#                fallBackUri: forward:/fallback
+
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: circuitBreaker
+#                fallBackUri: forward:/fallback
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#      filter:
+#        circuit-breaker:
+#          enabled: true
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      circuitBreaker :
+#        slidingWindowType: COUNT_BASED
+#        slidingWindowSize: 10
+#        failureRateThreshold: 50
+#        waitDurationInOpenState: 4s
+#        permittedNumberOfCallsInHalfOpenState: 4
+#        automaticTransitionFromOpenToHalfOpenEnabled: true
+#  retry:
+#    instances:
+#      retry:
+#        maxAttempts: 3
+#        failAfterMaxAttempts: true
+#        waitDuration: 500ms
+#  timelimiter:
+#    instances:
+#      timeLimiter:
+#        timeoutDuration: 3s
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8084
