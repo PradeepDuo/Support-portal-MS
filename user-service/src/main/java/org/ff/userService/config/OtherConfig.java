@@ -1,7 +1,6 @@
 package org.ff.userService.config;
+
 import org.ff.configModule.util.ApiResponse;
-import org.ff.userService.dao.UserDao;
-import org.ff.userService.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
