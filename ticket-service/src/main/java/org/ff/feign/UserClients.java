@@ -1,7 +1,7 @@
 package org.ff.feign;
 
-import org.ff.configModule.model.Users;
-import org.ff.configModule.util.ApiResponse;
+
+import org.ff.commonModule.model.Users;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

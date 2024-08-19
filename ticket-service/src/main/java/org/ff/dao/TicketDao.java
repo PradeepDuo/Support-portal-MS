@@ -1,7 +1,7 @@
 package org.ff.dao;
 
 import lombok.AllArgsConstructor;
-import org.ff.configModule.model.Ticket;
+import org.ff.commonModule.model.Ticket;
 import org.ff.repository.TicketRepository;
 import org.springframework.stereotype.Repository;
 

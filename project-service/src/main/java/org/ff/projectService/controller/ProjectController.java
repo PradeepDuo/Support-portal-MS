@@ -2,11 +2,13 @@ package org.ff.projectService.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.ff.configModule.dto.ProjectDto;
-import org.ff.configModule.model.Project;
+
+import org.ff.commonModule.dto.ProjectDto;
+import org.ff.commonModule.model.Project;
+import org.ff.commonModule.util.ApiResponse;
 import org.ff.projectService.dao.ProjectDao;
 import org.ff.projectService.service.ProjectService;
-import org.ff.configModule.util.ApiResponse;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

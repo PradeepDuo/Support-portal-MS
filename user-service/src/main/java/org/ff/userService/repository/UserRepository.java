@@ -1,6 +1,8 @@
 package org.ff.userService.repository;
 
-import org.ff.configModule.model.Users;
+
+
+import org.ff.commonModule.model.Users;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

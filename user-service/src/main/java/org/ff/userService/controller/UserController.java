@@ -2,17 +2,14 @@ package org.ff.userService.controller;
 
 import lombok.RequiredArgsConstructor;
 
-import org.apache.catalina.User;
-import org.ff.configModule.dto.UserDto;
-import org.ff.configModule.model.Users;
+
+import org.ff.commonModule.dto.UserDto;
+import org.ff.commonModule.model.Users;
+import org.ff.commonModule.util.ApiResponse;
 import org.ff.userService.dao.UserDao;
-import org.ff.userService.repository.UserRepository;
 import org.ff.userService.service.UserService;
-import org.ff.configModule.util.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.nio.file.attribute.UserDefinedFileAttributeView;
 
 @RestController
 @RequestMapping("/api/users")

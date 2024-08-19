@@ -1,6 +1,6 @@
-package org.ff.configModule.dto;
+package org.ff.commonModule.dto;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 public class UserDto {

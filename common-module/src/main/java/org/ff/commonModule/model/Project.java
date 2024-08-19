@@ -1,10 +1,10 @@
-package org.ff.configModule.model;
+package org.ff.commonModule.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.ff.configModule.util.BaseEntity;
+import org.ff.commonModule.util.BaseEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -8,16 +8,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.ff.configModule.model.Project;
-import org.ff.configModule.model.Ticket;
+
+import org.ff.commonModule.dto.ProjectDto;
+import org.ff.commonModule.model.Project;
+import org.ff.commonModule.model.Users;
+import org.ff.commonModule.util.ApiResponse;
+import org.ff.commonModule.util.ResponseUtil;
 import org.ff.projectService.client.UserClient;
 import org.ff.projectService.dao.ProjectDao;
-import org.ff.configModule.dto.ProjectDto;
-import org.ff.configModule.model.Users;
-import org.ff.configModule.util.ApiResponse;
-import org.ff.configModule.util.ResponseUtil;
-import org.ff.userService.dao.UserDao;
-import org.ff.userService.repository.UserRepository;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -78,7 +77,7 @@ public class ProjectService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-//        Project project = (Project) record .value();
+
 
 
     }

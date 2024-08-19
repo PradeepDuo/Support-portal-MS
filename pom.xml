@@ -19,13 +19,13 @@
     <modules>
         <module>user-service</module>
         <module>project-service</module>
-        <module>Config-module</module>
         <module>eureka-server</module>
         <module>ticket-service</module>
         <module>api-gateway</module>
+        <module>common-module</module>
+
     </modules>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-dependencies</artifactId>
@@ -39,5 +39,6 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
 
 </project>

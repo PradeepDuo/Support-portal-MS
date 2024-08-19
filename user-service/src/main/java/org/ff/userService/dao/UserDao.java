@@ -1,16 +1,15 @@
 package org.ff.userService.dao;
 
 import lombok.RequiredArgsConstructor;
-import org.ff.configModule.model.Project;
-import org.ff.configModule.model.Users;
+
+import org.ff.commonModule.model.Project;
+import org.ff.commonModule.model.Users;
 import org.ff.userService.repository.UserRepository;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-
-import java.util.Queue;
 
 @Repository
 @RequiredArgsConstructor

@@ -1,7 +1,8 @@
 package org.ff.feign;
 
-import org.ff.configModule.model.Project;
-import org.ff.configModule.util.ApiResponse;
+
+import org.ff.commonModule.model.Project;
+import org.ff.commonModule.util.ApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

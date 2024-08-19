@@ -1,4 +1,5 @@
 FROM openjdk:19
-COPY target/*.jar review-service.jar
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} userservice.jar
+ENTRYPOINT ["java","-jar","/userservice.jar"]
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","review-service.jar"]

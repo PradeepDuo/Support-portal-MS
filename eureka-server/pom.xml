@@ -34,4 +34,22 @@
         </dependency>
     </dependencies>
 
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.3.1</version> <!-- Ensure the version matches your project setup -->
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal> <!-- This will create a fat JAR -->
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+    </plugins>
+    </build>
+
 </project>

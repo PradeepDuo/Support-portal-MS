@@ -7,9 +7,10 @@ spring:
         enabled: false
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: user-service
+      uri: ${MONGO_CONFIG:mongodb://localhost:27017/user-service}
+#      host: localhost
+#      port: 27017
+#      database: user-service
       auto-index-creation : true
 eureka:
   instance: localhost
@@ -17,7 +18,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
 server:
   port: 8081
 

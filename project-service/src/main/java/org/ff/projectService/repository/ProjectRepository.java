@@ -1,6 +1,6 @@
 package org.ff.projectService.repository;
 
-import org.ff.configModule.model.Project;
+import org.ff.commonModule.model.Project;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

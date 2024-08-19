@@ -5,7 +5,7 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import org.ff.configModule.model.Project;
+import org.ff.commonModule.model.Project;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -50,7 +50,7 @@ public class KafkaConsumerConfig {
 //    }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String,Project>> kafkaListenerContainerFactory(){
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Project>> kafkaListenerContainerFactory(){
         ConcurrentKafkaListenerContainerFactory<String, Project> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;

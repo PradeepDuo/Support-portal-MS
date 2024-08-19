@@ -1,4 +1,4 @@
-package org.ff.configModule.util;
+package org.ff.commonModule.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

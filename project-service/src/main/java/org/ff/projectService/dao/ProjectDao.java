@@ -2,8 +2,8 @@ package org.ff.projectService.dao;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.ff.configModule.model.Project;
-import org.ff.configModule.model.Ticket;
+import org.ff.commonModule.model.Project;
+import org.ff.commonModule.model.Ticket;
 import org.ff.projectService.repository.ProjectRepository;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

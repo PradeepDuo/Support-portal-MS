@@ -1,4 +1,4 @@
-package org.ff.configModule.util;
+package org.ff.commonModule.util;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

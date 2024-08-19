@@ -1,11 +1,11 @@
-package org.ff.configModule;
+package org.ff.commonModule;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main {
+public class CommonModuleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class,args);
+        SpringApplication.run(CommonModuleApplication.class,args);
     }
 }

@@ -3,9 +3,9 @@ package org.ff.controller;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.ff.configModule.dto.TicketDto;
-import org.ff.configModule.model.Ticket;
-import org.ff.configModule.util.ApiResponse;
+
+import org.ff.commonModule.dto.TicketDto;
+import org.ff.commonModule.util.ApiResponse;
 import org.ff.dao.TicketDao;
 import org.ff.service.TicketService;
 import org.springframework.http.ResponseEntity;

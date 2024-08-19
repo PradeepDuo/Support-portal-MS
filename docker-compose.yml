@@ -1,0 +1,46 @@
+volumes:
+  mongo-data:
+services:
+  mongodb:
+    image: 'mongo'
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+  eurekaserver:
+    image: 'supportportal/eurekaserver'
+    container_name: eurekaserver
+    ports:
+      - '8761:8761'
+    healthcheck:
+      test: ["CMD","curl","-f","http://eurekaserver:8761/actuator/health"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+  apigateway:
+    image: 'supportportal/apigateway'
+    container_name: apigateway
+    ports:
+      - '8081:8081'
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+    depends_on:
+      eurekaserver:
+        condition: service_healthy
+  configmodule:
+    image: 'supportportal/configmodule'
+    container_name: configmodule
+    ports:
+      - '8085:8085'
+    links:
+      - mongodb
+    environment:
+      - MONGO_CONFIG=mongodb://mongodb:27017/config
+    depends_on:
+      - eurekaserver
+      - apigateway
+
+  userservice:
+    image: 'supportportal/userservice'
+

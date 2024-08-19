@@ -1,4 +1,4 @@
-package org.ff.configModule.dto;
+package org.ff.commonModule.dto;
 
 import lombok.Data;
 

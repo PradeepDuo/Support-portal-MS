@@ -1,7 +1,5 @@
 package org.ff.projectService.config;
 
-import org.ff.userService.dao.UserDao;
-import org.ff.userService.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

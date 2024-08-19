@@ -1,6 +1,6 @@
 package org.ff.userService.config;
 
-import org.ff.configModule.util.ApiResponse;
+import org.ff.commonModule.util.ApiResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

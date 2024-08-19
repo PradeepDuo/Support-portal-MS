@@ -1,4 +1,4 @@
-package org.ff.controller;
+package org.ff.apiGateway.controller;
 
 
 import org.springframework.http.ResponseEntity;
