@@ -63,6 +63,7 @@
                 <version>3.3.1</version> <!-- Ensure the version matches your project setup -->
                 <configuration>
                     <classifier>exe</classifier>
+                    <mainClass>org.ff.commonModule.CommonModuleApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -72,22 +73,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.2</version>
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>install</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <skip>true</skip>-->
-<!--                </configuration>-->
-            </plugin>
-
         </plugins>
     </build>
 

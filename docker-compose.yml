@@ -9,7 +9,7 @@ services:
     volumes:
       - mongo-data:/data/db
   eurekaserver:
-    image: 'supportportal/eurekaserver'
+    image: 'pradeep1492/eurekaserver'
     container_name: eurekaserver
     ports:
       - '8761:8761'
@@ -19,18 +19,18 @@ services:
       retries: 5
       timeout: 5s
   apigateway:
-    image: 'supportportal/apigateway'
+    image: 'pradeep1492/apigateway'
     container_name: apigateway
     ports:
-      - '8081:8081'
+      - '8084:8084'
     environment:
       - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
     depends_on:
       eurekaserver:
         condition: service_healthy
-  configmodule:
-    image: 'supportportal/configmodule'
-    container_name: configmodule
+  commonmodule:
+    image: 'pradeep1492/commonmodule'
+    container_name: commonmodule
     ports:
       - '8085:8085'
     links:
@@ -42,5 +42,18 @@ services:
       - apigateway
 
   userservice:
-    image: 'supportportal/userservice'
+    image: 'pradeep1492/userservice'
+    container_name: userservice
+    ports:
+      - '8081:8081'
+    links:
+      - mongodb
+    environment:
+      - MONGO_CONFIG=mongodb://mongodb:27017/config
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+    depends_on:
+      - eurekaserver
+      - apigateway
+      - commonmodule
+
 
