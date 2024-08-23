@@ -67,7 +67,9 @@ public class ProjectService {
 
     @KafkaListener(id = "project listener",topics = "ticket", groupId = "project-group")
     public void updateProjectByKafka (ConsumerRecord<String,Object> record){
-
+        System.out.println("=======================");
+        System.out.println(record.value());
+        System.out.println("=======================");
         String map = (String) record.value();
         try {
             Project project = objectMapper.readValue(map, Project.class);

@@ -1,5 +1,7 @@
 volumes:
   mongo-data:
+
+
 services:
   mongodb:
     image: 'mongo'
@@ -8,6 +10,8 @@ services:
       - '27017:27017'
     volumes:
       - mongo-data:/data/db
+
+
   eurekaserver:
     image: 'pradeep1492/eurekaserver'
     container_name: eurekaserver
@@ -18,9 +22,18 @@ services:
       interval: 10s
       retries: 5
       timeout: 5s
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+
+
+
   apigateway:
     image: 'pradeep1492/apigateway'
     container_name: apigateway
+#    build:
+#      context: .
+#      dockerfile: api-gateway/Dockerfile
     ports:
       - '8084:8084'
     environment:
@@ -28,6 +41,11 @@ services:
     depends_on:
       eurekaserver:
         condition: service_healthy
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+
+
   commonmodule:
     image: 'pradeep1492/commonmodule'
     container_name: commonmodule
@@ -40,20 +58,99 @@ services:
     depends_on:
       - eurekaserver
       - apigateway
+    build:
+      context: ./common-module
+      dockerfile: Dockerfile
+
 
   userservice:
     image: 'pradeep1492/userservice'
     container_name: userservice
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
     ports:
       - '8081:8081'
     links:
       - mongodb
     environment:
-      - MONGO_CONFIG=mongodb://mongodb:27017/config
+      - MONGO_CONFIG=mongodb://mongodb:27017/userservice
       - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
     depends_on:
       - eurekaserver
       - apigateway
       - commonmodule
+
+
+  projectservice:
+    build:
+      context: ./project-service
+      dockerfile: Dockerfile
+    image: 'pradeep1492/projectservice'
+    container_name: projectservice
+    ports:
+      - '8082:8082'
+    links:
+      - mongodb
+      - kafka
+    depends_on:
+      - eurekaserver
+      - apigateway
+      - commonmodule
+      - kafka
+      - zookeeper
+    environment:
+      - MONGO_CONFIG=mongodb://mongodb:27017/projectservice
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+#      - KAFKA_CONFIG=kafka:9092
+
+
+  ticketservice:
+    image: 'pradeep1492/ticketservice'
+    build:
+      context: ./ticket-service
+      dockerfile: Dockerfile
+    container_name: ticketservice
+    ports:
+      - '8083:8083'
+    links:
+      - mongodb
+      - kafka
+    depends_on:
+      - eurekaserver
+      - apigateway
+      - kafka
+      - zookeeper
+    environment:
+      - MONGO_CONFIG=mongodb://mongodb:27017/ticketservice
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+#      - KAFKA_CONFIG=kafka:9092
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka
+    container_name: kafka
+    ports:
+      - '9092:9092'
+    depends_on:
+      - zookeeper
+    environment:
+      #      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
+
+
 
 
